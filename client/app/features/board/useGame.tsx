@@ -22,8 +22,6 @@ export function useGame() {
             return false;
         }
         sync();
-                console.log(history);
-
         return true;
     }
 
