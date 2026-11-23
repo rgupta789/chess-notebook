@@ -5,14 +5,14 @@ import { sampleStrategies } from '../../test-data/sampleStrategies';
 import { ListItemText } from '@mui/material';
 import { ListItemButton } from '@mui/material';
 import { useState } from 'react';
+import type { NotepadMode } from './types';
 
-export function StrategyList() {
+type Props = {
+    onModeChange: (mode: NotepadMode) => void;
+}
+
+export function StrategyList({ onModeChange }: Props) {
     const [open, setOpen] = useState(false);
-
-    const handleClick = () => {
-        
-    }
-
 
     return (
         <Box>
@@ -21,7 +21,7 @@ export function StrategyList() {
                 <ListItem>
                 {sampleStrategies.map((s) => (
 
-                    <ListItemButton onClick={handleClick}>
+                    <ListItemButton onClick={() => onModeChange({ kind: 'view', strategyId: s.id})}>
                         <ListItemText key={s.id} primary={s.name} />
                     </ListItemButton>
                 ))}

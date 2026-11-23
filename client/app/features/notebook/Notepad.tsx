@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent'
 import { StrategyList } from './StrategyList';
+import { StrategyView } from './StrategyView';
 
 const cardStyle = {
     backgroundImage: `
@@ -13,21 +14,25 @@ const cardStyle = {
 
 type Props = {
     mode: NotepadMode;
+    onModeChange: (mode: NotepadMode) => void;
 }
 
-export function Notepad({ mode }: Props) {
-    const kind = 'list'
-    // switch (mode.kind) {
-    //     case 'list':
-    //         return <StrategyList />
-        
-    // }
+const renderContent = (mode: NotepadMode, onModeChange: Props['onModeChange']) => {
+    switch (mode.kind) {
+        case 'list':
+            return <StrategyList onModeChange={onModeChange} />;
+        case 'view':
+            return <StrategyView strategyId={mode.strategyId} onModeChange={onModeChange} />;
+    }
+}
+
+export function Notepad({ mode, onModeChange }: Props) {
+
     return (
         <Box>
             <Card>
                 <CardContent sx={cardStyle}>
-                    content
-                    <StrategyList/>
+=                   {renderContent(mode, onModeChange)}
                 </CardContent>
             </Card>
         </Box>

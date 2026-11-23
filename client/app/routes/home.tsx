@@ -4,11 +4,14 @@ import { useGame } from '../features/board/useGame';
 import { Notepad } from '../features/notebook/Notepad';
 
 import { Chessboard as Board } from '../features/board/Chessboard';
+import { useState } from 'react';
+import type { NotepadMode } from '../features/notebook/types';
 
 
 
 export default function Home() {
     const { fen, history, makeMove } = useGame();
+    const [mode, setMode] = useState<NotepadMode>({ kind: 'list'})
 
 
     // const chessboardOptions = {
@@ -24,7 +27,7 @@ export default function Home() {
 
           </Box>
           <Box sx={{ width: '50%', length: '50%', background: 'red'}}>
-            <Notepad mode={{ kind: 'list'}} />
+            <Notepad mode={mode} onModeChange={setMode} />
           </Box>
         </>
     );
