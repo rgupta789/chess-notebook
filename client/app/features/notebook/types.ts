@@ -10,3 +10,9 @@ export type Strategy = {
     moves: string[];
     createdAt: string;
 }
+
+export type MovePair = {
+  number: number;
+  white: string;
+  black?: string;
+}

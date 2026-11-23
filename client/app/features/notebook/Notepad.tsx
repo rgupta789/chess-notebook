@@ -32,7 +32,7 @@ export function Notepad({ mode, onModeChange }: Props) {
         <Box>
             <Card>
                 <CardContent sx={cardStyle}>
-=                   {renderContent(mode, onModeChange)}
+                   {renderContent(mode, onModeChange)}
                 </CardContent>
             </Card>
         </Box>
