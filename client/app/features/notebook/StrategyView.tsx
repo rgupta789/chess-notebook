@@ -1,8 +1,6 @@
 import type { NotepadMode, MovePair } from "./types";
 import { sampleStrategies } from '../../test-data/sampleStrategies';
 import Box from '@mui/material/Box';
-import { Button } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 type Props = {
     strategyId: string;
@@ -24,12 +22,6 @@ export function StrategyView({ strategyId, onModeChange }: Props)  {
 
     return (
         <>
-            <Button
-                startIcon={<ArrowBackIcon />}
-                onClick={() => onModeChange({ kind: 'list' })}
-                >
-                Back
-            </Button>
             <Box>
                 {toPairs(strategy.moves).map((pair) => (
                     <p key={pair.number}>
