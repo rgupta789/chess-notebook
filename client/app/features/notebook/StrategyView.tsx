@@ -23,12 +23,21 @@ export function StrategyView({ strategyId, onModeChange }: Props)  {
     return (
         <>
             <Box>
+                {strategy.name}
+            </Box>
+            <Box>
                 {toPairs(strategy.moves).map((pair) => (
+                    
                     <p key={pair.number}>
                         {pair.number}. {pair.white} {pair.black}
                     </p>
+
                 ))}
             </Box>
+            <Box>
+                {strategy.notes}
+            </Box>
+            
         </>
     );
 }
