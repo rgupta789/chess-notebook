@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent'
 import { StrategyList } from './StrategyList';
 import { StrategyView } from './StrategyView';
+import { AddStrategy } from './AddStrategy';
 import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -25,6 +26,8 @@ const renderContent = (mode: NotepadMode, onModeChange: Props['onModeChange']) =
             return <StrategyList onModeChange={onModeChange} />;
         case 'view':
             return <StrategyView strategyId={mode.strategyId} onModeChange={onModeChange} />;
+        case 'add':
+            return <AddStrategy/>
     }
 }
 
@@ -34,7 +37,7 @@ export function Notepad({ mode, onModeChange }: Props) {
         <Box>
             <Card>
                 <CardContent sx={cardStyle}>
-                    {mode.kind === 'view' && (
+                    {(mode.kind === 'view' || mode.kind === 'add') && (
                     <Button
                         startIcon={<ArrowBackIcon />}
                         onClick={() => onModeChange({ kind: 'list' })}

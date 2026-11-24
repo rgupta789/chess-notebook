@@ -6,6 +6,7 @@ import { ListItemText } from '@mui/material';
 import { ListItemButton } from '@mui/material';
 import { useState } from 'react';
 import type { NotepadMode } from './types';
+import { Button } from '@mui/material';
 
 type Props = {
     onModeChange: (mode: NotepadMode) => void;
@@ -13,6 +14,10 @@ type Props = {
 
 export function StrategyList({ onModeChange }: Props) {
     const [open, setOpen] = useState(false);
+
+    const handleAdd = () => {
+        onModeChange({ kind: 'add' })
+    }
 
     return (
         <Box>
@@ -27,6 +32,8 @@ export function StrategyList({ onModeChange }: Props) {
                 ))}
                 </ListItem>
             </List>
+
+            <Button onClick={handleAdd}>Add</Button>
 
         </Box>
     )
